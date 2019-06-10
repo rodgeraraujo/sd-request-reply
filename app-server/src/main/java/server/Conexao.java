@@ -14,8 +14,8 @@ public class Conexao extends Thread {
     public Conexao(Socket s) {
         try {
             cliente = s;
-            ent = new DataInputStream(cliente.getInputStream());
-            sai = new DataOutputStream(cliente.getOutputStream());
+            entrada = new DataInputStream(cliente.getInputStream());
+            saida = new DataOutputStream(cliente.getOutputStream());
             this.start();
         } catch (IOException e) {
             System.out.println("Erro IO Conexao: " + e.getMessage());
@@ -24,8 +24,8 @@ public class Conexao extends Thread {
 
     public void run() {
         try {
-            String recebido = ent.readUTF();
-            sai.writeUTF(recebido.toUpperCase());
+            String recebido = entrada.readUTF();
+            saida.writeUTF(recebido.toUpperCase());
         } catch (EOFException e) {
             System.out.println("Conexao: EOFException " + e.getMessage());
         } catch (IOException e) {
