@@ -7,16 +7,18 @@ import java.net.Socket;
 public class Server {
     public static void main(String args[]) {
         try {
-            int porta = 6789; // porta do serviço
+            int porta = 6789; // especifica a porta do serviço
+
+            //recebe argumentos informados na execução por terminal
             if (args.length > 0) porta = Integer.parseInt(args[0]);
             ServerSocket escuta = new ServerSocket(porta);
             System.out.println("Servidor");
             System.out.println("Porta de escuta (listen): " + porta);
             while (true) {
-                // accept bloqueia ateh que chegue um pedido de conexao de um cliente
+                // accept: bloqueia até que chegue uma requisição de conexao de algum cliente
                 Socket cliente = escuta.accept();
                 System.out.println("conexao aceita de (remoto): " + cliente.getRemoteSocketAddress());
-                // quando chega, cria nova thread para atender em especial o cliente
+                // cria nova thread para atender o cliente em questão
                 Conexao c = new Conexao(cliente);
             }
         } catch (IOException e) {

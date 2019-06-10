@@ -11,12 +11,11 @@ public class Client {
     public static void main(String args[]) {
         Socket s = null;
         try {
-            s = new Socket(args[0], Integer.parseInt(args[1])); // conecta o socket aa porta remota
-//            s = new Socket("127.0.0.1", 6789); // conecta o socket aa porta remota
+            s = new Socket(args[0], Integer.parseInt(args[1])); //conecta o socket a porta remota
             DataInputStream ent = new DataInputStream(s.getInputStream());
             DataOutputStream sai = new DataOutputStream(s.getOutputStream());
             sai.writeUTF(args[2]);
-            // le buffer de entrada
+            // lê buffer de entrada
             String recebido = ent.readUTF();
             System.out.println("Success: recebido do servidor: " + recebido);
         } catch (UnknownHostException e) {

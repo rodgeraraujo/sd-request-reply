@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.net.Socket;
 
 public class Conexao extends Thread {
-    DataInputStream ent;
-    DataOutputStream sai;
-    Socket cliente;
+    private DataInputStream entrada;
+    private DataOutputStream saida;
+    private Socket cliente;
 
     public Conexao(Socket s) {
         try {
