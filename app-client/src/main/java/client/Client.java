@@ -1,4 +1,4 @@
-package nf.co.rogerioaraujo.requestreply.client;
+package client;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -12,6 +12,7 @@ public class Client {
         Socket s = null;
         try {
             s = new Socket(args[0], Integer.parseInt(args[1])); // conecta o socket aa porta remota
+//            s = new Socket("127.0.0.1", 6789); // conecta o socket aa porta remota
             DataInputStream ent = new DataInputStream(s.getInputStream());
             DataOutputStream sai = new DataOutputStream(s.getOutputStream());
             sai.writeUTF(args[2]);
